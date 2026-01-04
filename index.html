@@ -148,7 +148,7 @@
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="#"
+                <a href="https://drive.google.com/drive/folders/1V4fc9eDaDMhQ-I7D-5zFznr25eWumwq-?usp=sharing"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -220,22 +220,26 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
+          
           <p>
-            The transition from traditional plaster-casting to digital CAD/CAM workflows has revolutionized prosthetic care, 
-            yet current solutions often require expensive proprietary software and significant manual labor.
-            Building on the mechanical foundations of <b>ZHAW-Link to Manuel's paper</b> and the <b>Free 3D Hands</b> initiative, we present <b>HandFit</b>,
-            an automated Blender Add-on that democratizes patient-specific prosthetic customization.
+            Open-source 3D-printed prosthetics have made low-cost devices possible, but a critical bottleneck remains: 
+            fitting a generic design to a child's unique anatomy still requires CAD expertise and hours of manual work. 
+            For families who need to refit every 6–12 months as children grow, this technical barrier puts truly personalized prosthetics out of reach.
           </p>
           <p>
-            HandFit replaces the manual "Measurement and Scaling Guide" with a <b>"one-click" algorithm</b> that executes three critical operations:
-            (1) <b>Landmark Alignment</b> to orient the prosthetic to the scan; 
-            (2) <b>Anisotropic Scaling</b> to match distinct wrist width and palm length proportions; and 
-            (3) <b>Socket Fitting</b> using a non-destructive shrink-wrap modifier with precise offset control.
+            We present <strong>HandFit</strong>, a free Blender add-on that automates the entire customization workflow.
+            Our framework consists of: (1) <strong>landmark-based alignment</strong> that orients the prosthetic to the patient's scan;
+            (2) <strong>anisotropic scaling</strong> that independently adjusts wrist width and palm length;
+            (3) <strong>socket conformation</strong> using shrinkwrap projection with millimeter-precise offset control for liner fit.
           </p>
           <p>
-            This tool significantly reduces the technical expertise required for clinicians, enabling rapid deployment of open-source 3D printed limbs 
-            compatible with standard FDM printers.
+            HandFit achieves <strong>sub-millimeter precision (±0.01mm)</strong> across all eight Kinetic Hand variants, 
+            reducing fitting time from 30–60 minutes to under 5 minutes. 
+            We release the add-on, pre-configured Master Models, and documentation to enable non-technical users, parents, clinicians,
+             and makers to produce print-ready prosthetics independently.
           </p>
+          
+          
         </div>
       </div>
     </div>
@@ -290,64 +294,77 @@
         </div>
       </div>
 
-      <br><hr><br>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">3D Print Ready</h2>
-          <div class="content has-text-justified">
-            <p>
-              The finished prosthetic model is exported as a <b>.stl</b> file ready to be loaded in any 3D printer software for printing. 
-              This standard format ensures compatibility with all major slicing software (such as Cura or PrusaSlicer) and FDM printers, 
-              facilitating immediate local manufacturing.
-            </p>
-          </div>
-          <figure class="image">
-            <img src="./static/images/prosthetic_print.jpg" 
-                 alt="Real 3D Printed Prosthetic Hand" 
-                 style="width: 80%; margin: 0 auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-            <figcaption class="mt-2 is-italic text-gray-500">Figure: The final 3D printed prosthetic socket produced from the HandFit output.</figcaption>
-          </figure>
-        </div>
-      </div>
 
-    </div>
-  </div>
-</section>
-
-<section class="section">
+<section class="section hero is-light">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Interactive 3D Preview</h2>
     <div class="columns is-centered">
-      <div class="column is-full-width">
-        <div class="card">
-          <div class="card-content" style="padding: 0;">
-            
-            <model-viewer 
-              src="./static/images/Left_hand_full.glb" 
-              poster="./static/images/loading-icon.png" 
-              alt="A 3D model of the prosthetic hand"
-              shadow-intensity="1" 
-              camera-controls 
-              auto-rotate 
-              touch-action="pan-y"
-              style="width: 100%; height: 400px; background-color: #f0f0f0;">
-              
-              <div slot="progress-bar"></div>
-            </model-viewer>
-
-          </div>
-          <footer class="card-footer">
-            <p class="card-footer-item">
-              <span>
-                Use your mouse/finger to <b>rotate</b> and <b>zoom</b> the model.
-              </span>
-            </p>
-          </footer>
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Getting Started</h2>
+        <p class="subtitle has-text-centered">From scan to print in 5 steps</p>
+        <div class="content">
+          
+          <table class="table is-fullwidth">
+            <thead>
+              <tr>
+                <th style="width: 5%">Step</th>
+                <th>Action</th>
+                <th style="width: 15%">Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag is-primary is-medium">1</span></td>
+                <td>
+                  <strong>Scan the hand</strong><br>
+                  Use EM3D (or similar) to capture a 360° scan of the residual limb. Export as .stl file.
+                </td>
+                <td>2–3 min</td>
+              </tr>
+              <tr>
+                <td><span class="tag is-primary is-medium">2</span></td>
+                <td>
+                  <strong>Import into Blender</strong><br>
+                  Open Blender, import the hand scan (.stl) and load the appropriate Master Model from the pre-configured library.
+                </td>
+                <td>30 sec</td>
+              </tr>
+              <tr>
+                <td><span class="tag is-primary is-medium">3</span></td>
+                <td>
+                  <strong>Place landmarks</strong><br>
+                  Click "Create Landmarks" and position the three points: left wrist, right wrist, and palm center.
+                </td>
+                <td>1 min</td>
+              </tr>
+              <tr>
+                <td><span class="tag is-primary is-medium">4</span></td>
+                <td>
+                  <strong>Click "Fit"</strong><br>
+                  HandFit automatically aligns, scales, and conforms the socket. Adjust the offset slider if needed.
+                </td>
+                <td>< 1 min</td>
+              </tr>
+              <tr>
+                <td><span class="tag is-primary is-medium">5</span></td>
+                <td>
+                  <strong>Export and print</strong><br>
+                  Click "Apply and Finalize," then export as .stl. Load into your slicer and print.
+                </td>
+                <td>30 sec</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p class="has-text-centered">
+            <strong>Total time: ~5 minutes</strong> (excluding print time)
+          </p>
+          
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -361,37 +378,191 @@
         <thead>
           <tr>
             <th>Method</th>
-            <th>Time to Fit</th>
+            <th>Total Time*</th>
+            <th>Software Time</th>
             <th>Required Expertise</th>
             <th>Repeatability</th>
-            <th class="highlight-blue">Efficiency Gain</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Manual CAD (Standard)</td>
+            <td>30-60 min</td>
             <td>15-20 min</td>
             <td>High (CAD Skills)</td>
             <td>Low (User Varied)</td>
-            <td>Baseline</td>
           </tr>
           <tr>
             <td>Uniform Scaling</td>
+            <td>15-20 min</td>
             <td>5-10 min</td>
             <td>Medium</td>
             <td>Medium</td>
-            <td>2x</td>
           </tr>
           <tr>
             <td class="our-model">HandFit (Ours)</td>
+            <td class="our-model">~5 min</td>
             <td class="our-model">&lt; 1 min</td>
-            <td class="our-model">Low (One-Click)</td>
+            <td class="our-model">Low (Few-Clicks)</td>
             <td class="our-model">High (Algorithmic)</td>
-            <td class="highlight-blue">20x</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="is-size-7 has-text-grey">
+        *Total time includes scanning, landmark placement, software fitting, and export. Print time excluded.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Results</h2>
+    <div class="content has-text-justified">
+      <p>
+        We evaluated HandFit across all eight Kinetic Hand Master Model variants. The primary metric is 
+        Root Mean Square Error (RMSE) between the socket surface and the patient scan, measured before 
+        and after automated fitting with a target offset of 3.0mm for liner accommodation.
+      </p>
+    </div>
+
+    <div class="table-container">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Master Model Variant</th>
+            <th>RMSE Before (mm)</th>
+            <th>RMSE After (mm)</th>
+            <th>Improvement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Full Hand - Left</td>
+            <td>13.68</td>
+            <td>2.99</td>
+            <td>78.1%</td>
+          </tr>
+          <tr>
+            <td>Full Hand - Right</td>
+            <td>14.15</td>
+            <td>2.98</td>
+            <td>78.9%</td>
+          </tr>
+          <tr>
+            <td>Pinky - Left</td>
+            <td>11.47</td>
+            <td>3.00</td>
+            <td>73.8%</td>
+          </tr>
+          <tr>
+            <td>Pinky - Right</td>
+            <td>6.11</td>
+            <td>2.99</td>
+            <td>51.0%</td>
+          </tr>
+          <tr>
+            <td>Thumb/Index - Left</td>
+            <td>5.00</td>
+            <td>2.99</td>
+            <td>40.3%</td>
+          </tr>
+          <tr>
+            <td>Thumb/Index - Right</td>
+            <td>4.96</td>
+            <td>3.00</td>
+            <td>39.6%</td>
+          </tr>
+          <tr>
+            <td>Thumb - Left</td>
+            <td>7.81</td>
+            <td>2.99</td>
+            <td>61.7%</td>
+          </tr>
+          <tr>
+            <td>Thumb - Right</td>
+            <td>6.44</td>
+            <td>3.00</td>
+            <td>53.4%</td>
           </tr>
         </tbody>
       </table>
     </div>
+
+    <div class="content has-text-justified" style="margin-top: 1.5rem;">
+      <p>
+        Regardless of initial discrepancy (ranging from 4.96mm to 14.15mm), the fitted socket consistently 
+        converges to the target 3.0mm offset with <strong>sub-millimeter precision (±0.01mm)</strong>. This ensures 
+        uniform liner accommodation and eliminates localized pressure points.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Socket Gap Visualization</h2>
+        <p class="subtitle has-text-centered">
+          Heat maps showing material added during fitting. Blue = tight initial fit(good fit); Red = significant deformation required.
+        </p>
+        <div class="columns is-multiline is-centered">
+          <div class="column is-3 has-text-centered">
+            <figure class="image">
+              <img src="./static/images/left_full_heatmap.png" alt="Full Hand - Left">
+            </figure>
+            <p class="is-size-7">Full Hand - L</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <figure class="image">
+              <img src="./static/images/right_full_heatmap.png" alt="Full Hand - Right">
+            </figure>
+            <p class="is-size-7">Full Hand - R</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <figure class="image">
+              <img src="./static/images/left_pinky_heatmap.png" alt="Pinky - Left">
+            </figure>
+            <p class="is-size-7">Pinky - L</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <figure class="image">
+              <img src="./static/images/right_pinky_heatmap.png" alt="Pinky - Right">
+            </figure>
+            <p class="is-size-7">Pinky - R</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <figure class="image">
+              <img src="./static/images/left_thumb_index_heatmap.png" alt="Thumb/Index - Left">
+            </figure>
+            <p class="is-size-7">Thumb/Index - L</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <figure class="image">
+              <img src="./static/images/right_thumb_index_heatmap.png" alt="Thumb/Index - Right">
+            </figure>
+            <p class="is-size-7">Thumb/Index - R</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <figure class="image">
+              <img src="./static/images/left_thumb_heatmap.png" alt="Thumb - Left">
+            </figure>
+            <p class="is-size-7">Thumb - L</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <figure class="image">
+              <img src="./static/images/right_thumb_heatmap.png" alt="Thumb - Right">
+            </figure>
+            <p class="is-size-7">Thumb - R</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
     
     <br>
     
@@ -410,7 +581,7 @@
       </div>
     </div>
 
-    
+
 
     <h2 class="title is-3">Master Models</h2>
     <div class="columns is-centered">
@@ -519,6 +690,115 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">System Requirements</h2>
+        <div class="content">
+          
+          <table class="table is-bordered is-striped is-fullwidth">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Requirement</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Blender</strong></td>
+                <td>4.2 or later</td>
+                <td>Free download from <a href="https://www.blender.org/download/">blender.org</a></td>
+              </tr>
+              <tr>
+                <td><strong>3D Scanning</strong></td>
+                <td>iOS device with TrueDepth camera</td>
+                <td>We recommend <a href="https://apps.apple.com/us/app/em3d-ethan-makes-3d-scanner/id1546149822">EM3D</a>; alternatives include Polycam or any app that exports .stl meshes</td>
+              </tr>
+              <tr>
+                <td><strong>RAM</strong></td>
+                <td>8 GB minimum, 16 GB recommended</td>
+                <td>High-density scan meshes benefit from more memory</td>
+              </tr>
+              <tr>
+                <td><strong>GPU</strong></td>
+                <td>Any OpenGL 4.3+ compatible</td>
+                <td>Integrated graphics work; dedicated GPU improves viewport performance</td>
+              </tr>
+              <tr>
+                <td><strong>3D Printer</strong></td>
+                <td>Any FDM printer</td>
+                <td>Compatible with standard slicers (Cura, PrusaSlicer, etc.)</td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <br><hr><br>
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">3D Print Ready</h2>
+      <div class="content has-text-justified">
+        <p>
+          The finished prosthetic model is exported as a <b>.stl</b> file ready to be loaded in any 3D printer software for printing. 
+          This standard format ensures compatibility with all major slicing software (such as Cura or PrusaSlicer) and FDM printers, 
+          facilitating immediate local manufacturing.
+        </p>
+      </div>
+      <figure class="image">
+        <img src="./static/images/prosthetic_print.jpg" 
+             alt="Real 3D Printed Prosthetic Hand" 
+             style="width: 80%; margin: 0 auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        <figcaption class="mt-2 is-italic text-gray-500">Figure: The final 3D printed prosthetic socket produced from the HandFit output.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container is-max-desktop">
+<h2 class="title is-3 has-text-centered">Interactive 3D Preview</h2>
+<div class="columns is-centered">
+  <div class="column is-full-width">
+    <div class="card">
+      <div class="card-content" style="padding: 0;">
+        
+        <model-viewer 
+          src="./static/images/Left_hand_full.glb" 
+          poster="./static/images/loading-icon.png" 
+          alt="A 3D model of the prosthetic hand"
+          shadow-intensity="1" 
+          camera-controls 
+          auto-rotate 
+          touch-action="pan-y"
+          style="width: 100%; height: 400px; background-color: #f0f0f0;">
+          
+          <div slot="progress-bar"></div>
+        </model-viewer>
+
+      </div>
+      <footer class="card-footer">
+        <p class="card-footer-item">
+          <span>
+            Use your mouse/finger to <b>rotate</b> and <b>zoom</b> the model.
+          </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</div>
+</div>
+</section>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -532,6 +812,33 @@
   </div>
 </section>
 
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Contact & Support</h2>
+        <div class="content">
+          <p>
+            Questions, bug reports, or contributions? We'd love to hear from you.
+          </p>
+          <div class="buttons is-centered">
+            <a class="button is-link is-medium" href="https://github.com/marcosncosta1/prosthetic-fitter-addon/issues" target="_blank">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Open an Issue</span>
+            </a>
+            <a class="button is-primary is-medium" href="mailto:nepommar@students.zhaw.ch?subject=HandFit%20Inquiry">
+              <span class="icon"><i class="fas fa-envelope"></i></span>
+              <span>Email Us</span>
+            </a>
+          </div>
+          <p class="is-size-7 has-text-grey">
+            Want to contribute a new Master Model for a different prosthetic design? Submit a pull request or reach out directly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer class="footer">
   <div class="container">
